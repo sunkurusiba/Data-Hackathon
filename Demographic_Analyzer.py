@@ -1,8 +1,6 @@
 import pandas as pd
 import os
 
-
-
 BASE_DIR = os.getcwd() + "\\api_data_aadhar_demographic\\"
 data_files = ["api_data_aadhar_demographic_0_500000.csv",
                 "api_data_aadhar_demographic_500000_1000000.csv",
@@ -29,6 +27,7 @@ df.drop(df[df['state'] == "Madanapalle"].index,inplace=True,axis=0)
 df.drop(df[df['state'] == "Puttenahalli"].index,inplace=True,axis=0)
 df.drop(df[df['state'] == "Raja Annamalai Puram"].index,inplace=True,axis=0)
 
+
 def clean_state_name(state):
        # Handle missing values
     if not isinstance(state, str):
@@ -42,7 +41,7 @@ def clean_state_name(state):
     # Step B: Fix specific typos and legacy names using a Dictionary
     # This maps 'Incorrect Name' : 'Correct Name'
 
-    target_state = {
+    dicti = {
         "Andaman & Nicobar Islands" : "Andman and Nicobar Islands",
         "Andaman And Nicobar Islands" : "Andman and Nicobar Islands",
         "andhra pradesh" : "Andhra Pradesh",
@@ -72,13 +71,50 @@ def clean_state_name(state):
         "Uttarakhand" : "Uttrakhand",
     }
 
-    return target_state.get(state, state)
+    return dicti.get(state, state)
+
+# replacing the improper occurences of the 
+# df['state'] = df['state'].apply(clean_state_name)
+
+df_UP = df[df['state']=="Uttar Pradesh"]
+Correct_district = {
+    "Allahabad": "Prayagraj",
+    "Faizabad": "Ayodhya",
+    "Sant Ravidas Nagar": "Bhadohi",
+    "Sant Ravidas Nagar Bhadohi": "Bhadohi",
+    "Jyotiba Phule Nagar": "Amroha",
+    "Jyotiba Phule Nagar *": "Amroha",
+    "Mahrajganj": "Maharajganj",
+    "Bagpat": "Baghpat",
+    "Baghpat *": "Baghpat",
+    "Bulandshahar": "Bulandshahr",
+    "Bara Banki" : "Barabanki",
+    "Chitrakoot *": "Chitrakoot",
+    "Chandauli *": "Chandauli",
+    "Kushinagar *": "Kushinagar",
+    "Raebareli": "Rae Bareli"
+}
+df_UP["district"] = df_UP["district"].str.strip()
+df_UP["district"] = df_UP["district"].replace(Correct_district)
 
 
-df['state'] = df['state'].apply(clean_state_name)
+df_PB = df[df['state']=="Punjab"]
+Correct_district={
+    "Firozpur": "Ferozepur",
+    "Muktsar": "Sri Muktsar Sahib",
+    "SAS Nagar (Mohali)": "S.A.S. Nagar (Mohali)",
+    "S.A.S Nagar(Mohali)": "S.A.S. Nagar (Mohali)",
+    "Nawanshahr": "Shaheed Bhagat Singh Nagar"
+}
+df_PB["district"] = df_PB["district"].str.strip()
+df_PB["district"] = df_PB["district"].replace(Correct_district)
 
-print(df['state'].nunique())
-print(df['state'].unique())
+
+df_MP = df[df['state']=="Madhya Pradesh"]
+print(df_PB['district'].unique())
+print(df_PB['district'].nunique())
+
+# Correct_district =
 
 # for names in target_state.keys():
 #     df.replace({'state':names},target_state[names])
