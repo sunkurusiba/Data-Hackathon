@@ -74,7 +74,7 @@ def clean_state_name(state):
     return dicti.get(state, state)
 
 # replacing the improper occurences of the 
-# df['state'] = df['state'].apply(clean_state_name)
+df['state'] = df['state'].apply(clean_state_name)
 
 df_UP = df[df['state']=="Uttar Pradesh"]
 Correct_district = {
@@ -94,8 +94,11 @@ Correct_district = {
     "Kushinagar *": "Kushinagar",
     "Raebareli": "Rae Bareli"
 }
-df_UP["district"] = df_UP["district"].str.strip()
-df_UP["district"] = df_UP["district"].replace(Correct_district)
+df_UP = df_UP["district"].str.strip()
+df_UP = df_UP.replace(Correct_district)
+
+print(df_UP.unique())
+print(df_UP.nunique())
 
 
 df_PB = df[df['state']=="Punjab"]
@@ -106,15 +109,97 @@ Correct_district={
     "S.A.S Nagar(Mohali)": "S.A.S. Nagar (Mohali)",
     "Nawanshahr": "Shaheed Bhagat Singh Nagar"
 }
-df_PB["district"] = df_PB["district"].str.strip()
-df_PB["district"] = df_PB["district"].replace(Correct_district)
+df_PB = df_PB["district"].str.strip()
+df_PB = df_PB.replace(Correct_district)
+
+# print(df_PB.unique())
+# print(df_PB.nunique())
 
 
 df_MP = df[df['state']=="Madhya Pradesh"]
-print(df_PB['district'].unique())
-print(df_PB['district'].nunique())
+Correct_district = {
+    "Hoshangabad": "Narmadapuram",   # renamed officially
+    "East Nimar": "Khandwa",         # East Nimar is the old name for Khandwa
+    "West Nimar": "Khargone",        # West Nimar is the old name for Khargone
+    "Narsimhapur": "Narsinghpur",    # spelling variant
+    "Harda *": "Harda",              # duplicate with star
+    "Ashok Nagar": "Ashoknagar"      # official spelling is one word
+}
+df_MP = df_MP["district"].str.strip()
+df_MP = df_MP.replace(Correct_district)
 
-# Correct_district =
+# print(df_MP.unique())
+# print(df_MP.nunique())
+
+df_MH = df[df['state']=="Maharashtra"]
+Correct_district = {
+    "Ahmadnagar": "Ahmednagar",                 # spelling variant
+    "Ahmed Nagar": "Ahmednagar",                # spacing variant
+    "Bid": "Beed",                              # alternate spelling
+    "Buldana": "Buldhana",                      # spelling variant
+    "Aurangabad": "Chhatrapati Sambhajinagar",  # renamed officially
+    "Chatrapati Sambhaji Nagar": "Chhatrapati Sambhajinagar",  # spelling variant
+    "Osmanabad": "Dharashiv",                   # renamed officially
+    "Raigarh": "Raigad",                        # spelling variant
+    "Raigarh(MH)": "Raigad",                    # variant with suffix
+    "Mumbai( Sub Urban )": "Mumbai Suburban",   # spacing variant
+    "Mumbai City": "Mumbai City",               # correct, but unify with "Mumbai"
+    "Mumbai": "Mumbai City",       # keep official, but unify with other variants
+    "Gondiya": "Gondia",                        # spelling variant
+    "Gondiya *": "Gondia",                      # duplicate with star
+    "Nandurbar *": "Nandurbar",                 # duplicate with star
+    "Washim *": "Washim",                       # duplicate with star
+    "Hingoli *": "Hingoli",                     # duplicate with star
+    "Ahilyanagar": "Ahmednagar",                # unofficial variant sometimes used
+    "Dist : Thane": "Thane"                     # variant with prefix
+}
+df_MH = df_MH["district"].str.strip()
+df_MH = df_MH.replace(Correct_district)
+
+# print(df_MH.unique())
+# print(df_MH.nunique())
+
+df_HP = df[df['state']=="Himachal Pradesh"]
+Correct_district = {
+    "Lahul and Spiti" : "Lahaul Spiti",
+    "Lahul & Spiti" : "Lahaul Spiti",
+    "Lahaul and Spiti" : "Lahaul Spiti",
+}
+df_HP = df_HP["district"].str.strip()
+df_HP = df_HP.replace(Correct_district)
+
+# print(df_HP.unique())
+# print(df_HP.nunique())
+
+df_HR = df[df['state'] == "Haryana"]
+Correct_district = {
+    "Yamuna Nagar": "Yamunanagar"
+}
+df_HR = df_HR['district'].str.strip()
+df_HR = df_HR.replace(Correct_district) 
+
+# print(df_HR.unique())
+# print(df_HR.nunique())
+
+df_KL = df[df['state'] == "Kerala"]
+Correct_district = {
+    "Kasargod" : "Kasaragod"
+}
+df_KL = df_KL["district"].str.strip()
+df_KL = df_KL.replace(Correct_district)
+
+# print(df_KL.unique())
+# print(df_KL.nunique())
+
+df_TR = df[df['state'] == "Tripura"]
+Correct_district = {
+    "Dhalai  *" : "Dhalai"
+}
+df_TR = df_TR["district"].str.strip()
+df_TR = df_TR.replace(Correct_district)
+
+# print(df_TR.unique())
+# print(df_TR.nunique())
 
 # for names in target_state.keys():
 #     df.replace({'state':names},target_state[names])
