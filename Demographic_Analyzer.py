@@ -27,6 +27,7 @@ df.drop(df[df['state'] == "Madanapalle"].index,inplace=True,axis=0)
 df.drop(df[df['state'] == "Puttenahalli"].index,inplace=True,axis=0)
 df.drop(df[df['state'] == "Raja Annamalai Puram"].index,inplace=True,axis=0)
 
+print(df.shape)
 
 def clean_state_name(state):
        # Handle missing values
@@ -972,13 +973,13 @@ df_Andaman["district"] = df_Andaman["district"].replace(dict_Andaman)
 # print(df_Andaman["district"].nunique())
 
 
-list_of_dfs = [df_AndhraPradesh,df_Arunachal,df_Assam,
+list_of_dfs = [df_AP,df_Arunachal,df_Assam,
                df_Bihar,df_Chattisgarh,df_Goa,df_Gujarat,
-               df_Haryana,df_Himachal_Pradesh,df_Jharkhand,df_Kerla,df_Karnataka,
-              df_Maharashtra,df_MadhyaPradesh,df_Manipur,df_Mizoram,
+               df_HR,df_HP,df_Jharkhand,df_KL,df_Karnataka,
+              df_MH,df_MP,df_Manipur,df_Mizoram,
               meghalaya_district,df_Nagaland,df_OD,
-              df_Punjab,df_Rajasthan,df_Sikkim,df_TamilNadu,
-              df_Telangana,df_Tripura,df_UP,df_Uttarakhand,df_WB,
+              df_PB,df_Rajasthan,df_Sikkim,df_TamilNadu,
+              df_Telangana,df_TR,df_UP,df_Uttarakhand,df_WB,
               df_Delhi,df_Ladakh,df_Puducherry,df_DNDU,
               df_Chandigarh,df_Andaman,df_JK,df_Lakshadweep
               ]
