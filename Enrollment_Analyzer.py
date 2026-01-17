@@ -1250,3 +1250,21 @@ print(f"no. of districts in Haryana is {df_Haryana['district'].nunique()}")
 # Lakshadweep District-> 35
 df_Lakshadweep = df[df['state'] == "Lakshadweep"].copy()
 print("Lakshadweep",df[df["state"]== "Lakshadweep"]["district"].nunique())
+
+
+list_of_dfs = [df_AndhraPradesh,df_Arunachal,df_Assam,
+               df_Bihar,df_Chattisgarh,df_Goa,df_Gujarat,
+               df_Haryana,df_Himachal_Pradesh,df_Jharkhand,df_Kerla,df_Karnataka,
+              df_Maharashtra,df_MadhyaPradesh,df_Manipur,df_Mizoram,
+              meghalaya_district,df_Nagaland,df_OD,
+              df_Punjab,df_Rajasthan,df_Sikkim,df_TamilNadu,
+              df_Telangana,df_Tripura,df_UP,df_Uttarakhand,df_WB,
+              df_Delhi,df_Ladakh,df_Puducherry,df_DNDU,
+              df_Chandigarh,df_Andaman,df_JK,df_Lakshadweep
+              ]
+
+df_cleaned = pd.concat(list_of_dfs, ignore_index=True)  
+print("Shape of cleaned dataframe:", df_cleaned.shape)
+
+
+df_cleaned.to_csv("cleaned_Enrollment_data.csv", index=False)
