@@ -282,9 +282,6 @@ print(f"no. of districts in Jharakhand is {df_Jharkhand['district'].nunique()}")
 # print(df[df["state"]== "Nagaland"]["district"].unique())
 # df_Nagaland = df[df['state'] == "Nagaland"].copy()
 # df_Nagaland =
-#
-# df_Jharkhand['district'] = df_Jharkhand['district'].str.strip()
-# df_Jharkhand['district'] = df_Jharkhand['district'].replace(Jharkhand_dict)
 
 # Manipur Districts-> it is correct
 # print(df[df["state"]== "Manipur"]["district"].unique())
@@ -524,4 +521,220 @@ MadhyaPradesh_dict = {
 }
 df_MadhyaPradesh ['district'] = df_MadhyaPradesh ['district'].str.strip()
 df_MadhyaPradesh ['district'] = df_MadhyaPradesh ['district'].replace(MadhyaPradesh_dict )
-print(f"no. of districts in Andhra Pradesh is {df_MadhyaPradesh['district'].nunique()}")
+print(f"no. of districts in Madhya Pradesh is {df_MadhyaPradesh['district'].nunique()}")
+
+# Tamil Nadu Districts->
+# print(df[df["state"]== "Tamil Nadu"]["district"].unique())
+df_TamilNadu = df[df['state'] == "Tamil Nadu"].copy()
+TamilNadu_dict = {
+    "Kancheepuram": "Kanchipuram",
+    "Kanchipuram": "Kanchipuram",
+
+    "Villupuram": "Viluppuram",
+    "Viluppuram": "Viluppuram",
+
+    "Tuticorin": "Thoothukudi",
+    "Thoothukkudi": "Thoothukudi",
+
+    "The Nilgiris": "Nilgiris",
+
+    "Tirupathur": "Tirupattur",
+    "Tirupattur": "Tirupattur",
+
+    "Namakkal   *": "Namakkal",
+    "Namakkal": "Namakkal",
+
+    "Tiruvarur": "Tiruvarur",
+    "Thiruvarur": "Tiruvarur",
+
+    # Direct mappings / unchanged
+    "Ariyalur": "Ariyalur",
+    "Chengalpattu": "Chengalpattu",
+    "Chennai": "Chennai",
+    "Coimbatore": "Coimbatore",
+    "Cuddalore": "Cuddalore",
+    "Dharmapuri": "Dharmapuri",
+    "Dindigul": "Dindigul",
+    "Erode": "Erode",
+    "Kallakurichi": "Kallakurichi",
+    "Kanyakumari": "Kanyakumari",
+    "Karur": "Karur",
+    "Krishnagiri": "Krishnagiri",
+    "Madurai": "Madurai",
+    "Mayiladuthurai": "Mayiladuthurai",
+    "Nagapattinam": "Nagapattinam",
+    "Perambalur": "Perambalur",
+    "Pudukkottai": "Pudukkottai",
+    "Ramanathapuram": "Ramanathapuram",
+    "Ranipet": "Ranipet",
+    "Salem": "Salem",
+    "Sivaganga": "Sivaganga",
+    "Tenkasi": "Tenkasi",
+    "Thanjavur": "Thanjavur",
+    "Theni": "Theni",
+    "Tiruchirappalli": "Tiruchirappalli",
+    "Tirunelveli": "Tirunelveli",
+    "Tiruppur": "Tiruppur",
+    "Tiruvallur": "Tiruvallur",
+    "Tiruvannamalai": "Tiruvannamalai",
+    "Vellore": "Vellore",
+    "Virudhunagar": "Virudhunagar",
+    "Thiruvallur": "Tiruvallur",
+    "Kanniyakumari": "Kanyakumari"
+}
+df_TamilNadu['district'] = df_TamilNadu['district'].str.strip()
+df_TamilNadu['district'] = df_TamilNadu['district'].replace(TamilNadu_dict )
+print(f"no. of districts in Tamil Nadu is {df_TamilNadu['district'].nunique()}")
+# print(df[df["state"]== "Rajasthan"]["district"].nunique())
+
+# Maharashtra Districts->
+# print(df[df["state"]== "Maharashtra"]["district"].unique())
+df_Maharashtra = df[df['state'] == "Maharashtra"].copy()
+
+Maharashtra_dict = {
+    "Ahmadnagar": "Ahmednagar",                 # spelling variant
+    "Ahmed Nagar": "Ahmednagar",                # spacing variant
+    "Bid": "Beed",                              # alternate spelling
+    "Buldana": "Buldhana",                      # spelling variant
+    "Aurangabad": "Chhatrapati Sambhajinagar",  # renamed officially
+    "Chatrapati Sambhaji Nagar": "Chhatrapati Sambhajinagar",  # spelling variant
+    "Osmanabad": "Dharashiv",                   # renamed officially
+    "Raigarh": "Raigad",                        # spelling variant
+    "Raigarh(MH)": "Raigad",                    # variant with suffix
+    "Mumbai( Sub Urban )": "Mumbai Suburban",   # spacing variant
+    "Mumbai City": "Mumbai City",               # correct, but unify with "Mumbai"
+    "Mumbai": "Mumbai City",       # keep official, but unify with other variants
+    "Gondiya": "Gondia",                        # spelling variant
+    "Gondiya *": "Gondia",                      # duplicate with star
+    "Nandurbar *": "Nandurbar",                 # duplicate with star
+    "Washim *": "Washim",                       # duplicate with star
+    "Hingoli *": "Hingoli",                     # duplicate with star
+    "Ahilyanagar": "Ahmednagar",                # unofficial variant sometimes used
+    "Dist : Thane": "Thane"                     # variant with prefix
+}
+df_Maharashtra['district'] = df_Maharashtra["district"].str.strip()
+df_Maharashtra['district'] = df_Maharashtra["district"].replace(Maharashtra_dict)
+print(f"no. of districts in Maharashtra is {df_Maharashtra['district'].nunique()}")
+
+# Rajasthan Districts->
+# print(df[df["state"]== "Rajasthan"]["district"].unique())
+df_Rajasthan = df[df['state'] == "Rajasthan"].copy()
+Rajasthan_dict = {
+    # Ajmer region
+    "Ajmer": "Ajmer",
+    "Beawar": "Beawar",
+    "Kekri": "Kekri",
+
+    # Alwar region
+    "Alwar": "Alwar",
+    "Khairthal Tijara": "Khairthal Tijara",
+    "Kotputli Behror": "Kotputli Behror",
+
+    # Jaipur region
+    "Jaipur": "Jaipur",
+    "Jaipur Rural": "Jaipur Rural",
+    "Dudu": "Dudu",
+
+    # Jodhpur region
+    "Jodhpur": "Jodhpur",
+    "Jodhpur Rural": "Jodhpur Rural",
+    "Phalodi": "Phalodi",
+
+    # Bikaner region
+    "Bikaner": "Bikaner",
+    "Sri Ganganagar": "Sri Ganganagar",
+    "Ganganagar": "Sri Ganganagar",
+    "Anupgarh": "Anupgarh",
+
+    # Bharatpur region
+    "Bharatpur": "Bharatpur",
+    "Deeg": "Deeg",
+    "Deeg\xa0": "Deeg",
+    "Dholpur": "Dholpur",
+    "Dhaulpur": "Dholpur",
+    "Karauli": "Karauli",
+
+    # Kota region
+    "Kota": "Kota",
+    "Jhalawar": "Jhalawar",
+    "Baran": "Baran",
+
+    # Udaipur region
+    "Udaipur": "Udaipur",
+    "Rajsamand": "Rajsamand",
+    "Dungarpur": "Dungarpur",
+    "Banswara": "Banswara",
+    "Salumbar": "Salumbar",
+    "Pratapgarh": "Pratapgarh",
+
+    # Nagaur region
+    "Nagaur": "Nagaur",
+    "Didwana-Kuchaman": "Didwana Kuchaman",
+
+    # Others
+    "Sikar": "Sikar",
+    "Neem ka Thana": "Neem ka Thana",
+    "Jhunjhunun": "Jhunjhunu",
+    "Jhunjhunu": "Jhunjhunu",
+    "Churu": "Churu",
+    "Hanumangarh": "Hanumangarh",
+    "Sawai Madhopur": "Sawai Madhopur",
+    "Tonk": "Tonk",
+    "Pali": "Pali",
+    "Barmer": "Barmer",
+    "Balotra": "Balotra",
+    "Sanchore": "Sanchore",
+    "Jalore": "Jalore",
+    "Jalor": "Jalore",
+    "Sirohi": "Sirohi",
+    "Chittorgarh": "Chittorgarh",
+    "Chittaurgarh": "Chittorgarh",
+    "Shahpura": "Shahpura",
+    "Gangapur City": "Gangapur City"
+}
+df_Rajasthan['district'] = df_Rajasthan["district"].str.strip()
+df_Rajasthan['district'] = df_Rajasthan["district"].replace(Rajasthan_dict)
+print(f"no. of districts in Rajasthan is {df_Rajasthan['district'].nunique()}")
+
+# Haryana District->
+# print(df[df["state"]== "Haryana"]["district"].nunique())
+df_Haryana = df[df['state'] == "Haryana"].copy()
+Haryana_dict = {
+    # Gurugram / Mewat
+    "Gurgaon": "Gurugram",
+    "Gurugram": "Gurugram",
+    "Mewat": "Nuh (Formerly Mewat)",
+    "Nuh": "Nuh (Formerly Mewat)",
+
+    # Yamunanagar
+    "Yamuna Nagar": "Yamunanagar",
+    "Yamunanagar": "Yamunanagar",
+
+    # Jhajjar
+    "Jhajjar *": "Jhajjar",
+    "Jhajjar": "Jhajjar",
+
+    # Direct mappings / unchanged
+    "Ambala": "Ambala",
+    "Bhiwani": "Bhiwani",
+    "Charkhi Dadri": "Charkhi Dadri",
+    "Faridabad": "Faridabad",
+    "Fatehabad": "Fatehabad",
+    "Hisar": "Hisar",
+    "Jind": "Jind",
+    "Kaithal": "Kaithal",
+    "Karnal": "Karnal",
+    "Kurukshetra": "Kurukshetra",
+    "Mahendragarh": "Mahendragarh",
+    "Palwal": "Palwal",
+    "Panchkula": "Panchkula",
+    "Panipat": "Panipat",
+    "Rewari": "Rewari",
+    "Rohtak": "Rohtak",
+    "Sirsa": "Sirsa",
+    "Sonipat": "Sonipat"
+}
+
+df_Haryana['district'] = df_Haryana["district"].str.strip()
+df_Haryana['district'] = df_Haryana["district"].replace(Haryana_dict)
+print(f"no. of districts in Haryana is {df_Haryana['district'].nunique()}")
