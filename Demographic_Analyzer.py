@@ -118,8 +118,8 @@ Correct_district={
 df_PB['district'] = df_PB["district"].str.strip()
 df_PB['district'] = df_PB['district'].replace(Correct_district)
 
-print(df_PB['district'].unique())
-print(df_PB['district'].nunique())
+# print(df_PB['district'].unique())
+# print(df_PB['district'].nunique())
 
 
 df_MP = df[df['state']=="Madhya Pradesh"].copy()
