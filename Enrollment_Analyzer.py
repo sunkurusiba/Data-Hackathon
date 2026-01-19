@@ -7,6 +7,7 @@ enroll_1 = pd.read_csv("D:\\dataset\\api_data_aadhar_enrolment\\api_data_aadhar_
 enroll_2 = pd.read_csv("D:\\dataset\\api_data_aadhar_enrolment\\api_data_aadhar_enrolment\\api_data_aadhar_enrolment_500000_1000000.csv")
 enroll_3 = pd.read_csv("D:\\dataset\\api_data_aadhar_enrolment\\api_data_aadhar_enrolment\\api_data_aadhar_enrolment_1000000_1006029.csv")
 df=pd.concat([enroll_1,enroll_2,enroll_3],axis=0,ignore_index=True)
+print("Shape before cleaned dataframe:", df.shape)
 # print(df.shape)
 # print(df["state"].nunique())
 # print(df["state"].unique())
@@ -225,8 +226,8 @@ df_DNDU["district"] = df_DNDU["district"].replace(dict_DNDU)
 # replace the Rupnagar dist chandigarh to punjab
 df.loc[(df['district']=="Rupnagar") & (df['state']=="Chandigarh"), 'state'] = "Punjab"
 df_Chandigarh =df[df['state'] == "Chandigarh"].copy()
-# print(df_Chandigarh['district'].unique())
-# print(df_Chandigarh['district'].nunique())
+print(df_Chandigarh['district'].unique())
+print(df_Chandigarh['district'].nunique())
 
 
 #Andaman and Nicobar Islands 08
@@ -605,7 +606,7 @@ dict_Assam = {
 }
 df_Assam["district"] = df_Assam["district"].str.strip()
 df_Assam["district"] = df_Assam["district"].replace(dict_Assam)
-# print(df_Assam['district'].unique())
+print(df_Assam['district'].unique())
 print("assam",df_Assam['district'].nunique())
 
 
@@ -775,8 +776,8 @@ df_Kerla = df[df['state'] == "Kerala"].copy()
 dict_Kerla = {
     "Kasargod" : "Kasaragod"
 }
-df_Kerla = df_Kerla["district"].str.strip()
-df_Kerla = df_Kerla.replace(dict_Kerla)
+df_Kerla["district"] = df_Kerla["district"].str.strip()
+df_Kerla["district"] = df_Kerla["district"].replace(dict_Kerla)
 # print(df_Kerla.unique())
 print("kerla",df_Kerla.nunique())
 
@@ -1267,4 +1268,4 @@ df_cleaned = pd.concat(list_of_dfs, ignore_index=True)
 print("Shape of cleaned dataframe:", df_cleaned.shape)
 
 
-df_cleaned.to_csv("cleaned_Enrollment_data.csv", index=False)
+df_cleaned.to_csv("cleaned_Enrollment_data_1.csv", index=False)
